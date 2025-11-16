@@ -1,9 +1,13 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { folderStyles, fontWeights, exportSizes } from "@/utils/folderStyles";
+import { canvasToICO, canvasToPNG } from "@/utils/iconConverter";
+import { saveAs } from "file-saver";
 import FolderPreview from "./FolderPreview";
 import ControlPanel from "./ControlPanel";
+
+export type ExportFormat = 'ico' | 'png';
 
 export default function FolderGenerator() {
   const [image, setImage] = useState<string | null>(null);
@@ -12,6 +16,7 @@ export default function FolderGenerator() {
   const [fontWeight, setFontWeight] = useState(fontWeights[4].value);
   const [titleBgColor, setTitleBgColor] = useState("#8B1538");
   const [titleTextColor, setTitleTextColor] = useState("#ffffff");
+  const [exportFormat, setExportFormat] = useState<ExportFormat>('ico');
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -54,7 +59,7 @@ export default function FolderGenerator() {
     }
   };
 
-  const handleExport = (size: number) => {
+  const handleExport = async (size: number) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -66,16 +71,20 @@ export default function FolderGenerator() {
 
     ctx.drawImage(canvas, 0, 0, size, size);
 
-    exportCanvas.toBlob((blob) => {
-      if (blob) {
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = `folder-icon-${size}x${size}.png`;
-        a.click();
-        URL.revokeObjectURL(url);
+    try {
+      if (exportFormat === 'ico') {
+        // Export as ICO (can include multiple sizes)
+        const blob = await canvasToICO(exportCanvas, [size]);
+        saveAs(blob, `folder-icon-${size}x${size}.ico`);
+      } else {
+        // Export as PNG
+        const blob = await canvasToPNG(exportCanvas);
+        saveAs(blob, `folder-icon-${size}x${size}.png`);
       }
-    });
+    } catch (error) {
+      console.error('Export failed:', error);
+      alert('Failed to export icon. Please try again.');
+    }
   };
 
   return (
@@ -87,6 +96,7 @@ export default function FolderGenerator() {
         fontWeight={fontWeight}
         titleBgColor={titleBgColor}
         titleTextColor={titleTextColor}
+        exportFormat={exportFormat}
         onImageUpload={handleImageUpload}
         onImagePaste={handleImagePaste}
         onTitleChange={setTitle}
@@ -94,6 +104,7 @@ export default function FolderGenerator() {
         onFontWeightChange={setFontWeight}
         onTitleBgColorChange={setTitleBgColor}
         onTitleTextColorChange={setTitleTextColor}
+        onExportFormatChange={setExportFormat}
         onExport={handleExport}
       />
 
