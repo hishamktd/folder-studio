@@ -1,7 +1,25 @@
 {
   "name": "folder-studio",
   "version": "1.0.0",
-  "description": "Modern Folder Icon Generator",
+  "description": "Modern Folder Icon Generator - Create beautiful custom folder icons with neon-styled designs",
+  "author": "Folder Studio Team",
+  "license": "MIT",
+  "homepage": "https://folder-studio.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/folder-studio"
+  },
+  "keywords": [
+    "folder",
+    "icon",
+    "generator",
+    "design",
+    "neon",
+    "custom",
+    "canvas",
+    "nextjs",
+    "typescript"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",

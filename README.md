@@ -1,8 +1,14 @@
 # Folder Studio
 
+[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/yourusername/folder-studio)
+[![Live Demo](https://img.shields.io/badge/demo-live-success.svg)](https://folder-studio.vercel.app)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+
 A modern, minimal, neon-styled Folder Icon Generator built with Next.js, TypeScript, and Tailwind CSS.
 
 Create beautiful custom folder icons with a distinctive tab design, inspired by professional folder aesthetics.
+
+**🌐 Live Demo**: [https://folder-studio.vercel.app](https://folder-studio.vercel.app)
 
 ## Features
 
@@ -90,6 +96,49 @@ folder-studio/
 - `pnpm start` - Start production server
 - `pnpm lint` - Run ESLint
 
+## Deployment
+
+The application is deployed on Vercel and is production-ready.
+
+**Live URL**: [https://folder-studio.vercel.app](https://folder-studio.vercel.app)
+
+### Deploy Your Own
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/folder-studio)
+
+1. Fork this repository
+2. Connect to Vercel
+3. Deploy with one click
+
+The app is optimized for Vercel deployment with:
+- Automatic builds on push
+- Edge runtime support
+- Optimized static assets
+- Fast global CDN
+
+## Version History
+
+Current version: **1.0.0**
+
+See [CHANGELOG.md](CHANGELOG.md) for detailed version history and release notes.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
 ## License
 
-MIT
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- Inspired by modern folder icon designs
+- Built with Next.js and TypeScript
+- Styled with Tailwind CSS
+- Deployed on Vercel

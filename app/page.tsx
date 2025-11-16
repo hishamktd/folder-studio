@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import FolderGenerator from "@/components/FolderGenerator";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -17,6 +17,8 @@ export default function Home() {
         </header>
 
         <FolderGenerator />
+
+        <Footer />
       </div>
     </main>
   );
