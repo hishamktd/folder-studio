@@ -5,6 +5,49 @@ All notable changes to Folder Studio will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2025-11-17
+
+### Enhanced
+
+- **Sticky Preview Panel**
+  - Preview panel now remains fixed and visible while scrolling
+  - Always-on-screen live preview for better user experience
+  - Fixed width (600px) for consistent preview display
+  - Added real-time status indicator with pulsing green dot
+  - Enhanced preview card with gradient backgrounds and improved shadows
+
+- **Scrollable Customization Panel**
+  - Left panel now has smooth scrolling for all customization options
+  - Maximum height constraint (calc(100vh - 12rem)) prevents page scrolling
+  - Custom-styled scrollbar with refined aesthetics
+  - Better organization of controls in scrollable container
+
+- **Refined UI Components**
+  - Enhanced all buttons with scale animations on hover (1.02x)
+  - Added gradient backgrounds to accent buttons
+  - Improved button shadows with color-matched glow effects
+  - Better focus states for all input fields with ring effects
+  - Enhanced input styling with improved padding and transitions
+  - Upgraded style selection buttons with ring indicators when selected
+  - Added hover scale effects to all interactive elements
+
+- **Visual Polish**
+  - Refined section cards with gradient backgrounds and hover effects
+  - Improved header styling with tighter tracking
+  - Enhanced image preview with rounded borders and shadows
+  - Better color transitions (duration-200) across all components
+  - Custom scrollbar styling matching the dark theme
+  - Uppercase section titles with improved spacing
+  - Enhanced overall visual hierarchy and consistency
+
+### Technical Improvements
+
+- Updated layout grid system with explicit column sizing
+- Added custom scrollbar CSS utilities in globals.css
+- Improved transition durations for smoother animations
+- Better component styling organization and consistency
+- Enhanced responsive design with sticky positioning
+
 ## [1.2.0] - 2025-11-17
 
 ### Added
@@ -256,7 +299,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Release Date | Status |
 |---------|-------------|--------|
-| 1.2.0   | 2025-11-17  | ✅ Current |
+| 1.3.0   | 2025-11-17  | ✅ Current |
+| 1.2.0   | 2025-11-17  | Released |
 | 1.1.0   | 2025-11-17  | Released |
 | 1.0.1   | 2025-11-16  | Released |
 | 1.0.0   | 2025-11-16  | Released |

@@ -27,7 +27,7 @@ export function Input({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full px-4 py-2 bg-gray-900/50 border border-gray-600 rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all"
+        className="w-full px-4 py-2.5 bg-gray-900/60 border border-gray-600 rounded-lg text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all duration-200"
       />
     </div>
   );
@@ -49,7 +49,7 @@ export function Select({ label, value, onChange, options }: SelectProps) {
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full px-4 py-2 bg-gray-900/50 border border-gray-600 rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all cursor-pointer"
+        className="w-full px-4 py-2.5 bg-gray-900/60 border border-gray-600 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all duration-200 cursor-pointer"
       >
         {options.map((option) => (
           <option key={option.value} value={option.value}>

@@ -4,6 +4,7 @@
 
 import { FOLDER_STYLES, FONT_WEIGHTS } from './styles';
 import { ExportFormat } from '@/types/folder';
+import packageJson from '../package.json';
 
 /**
  * Default folder configuration values
@@ -21,8 +22,8 @@ export const DEFAULTS = {
  * Application metadata
  */
 export const APP_METADATA = {
-  NAME: 'Folder Studio',
-  VERSION: '1.1.0',
-  DESCRIPTION: 'Create custom folder icons with neon-styled designs',
-  AUTHOR: 'Folder Studio Team',
+  NAME: packageJson.name,
+  VERSION: packageJson.version,
+  DESCRIPTION: packageJson.description,
+  AUTHOR: packageJson.author,
 } as const;
