@@ -1,6 +1,7 @@
 "use client";
 
 import { folderStyles, fontWeights, exportSizes, FolderStyle } from "@/utils/folderStyles";
+import type { ExportFormat } from "./FolderGenerator";
 
 interface ControlPanelProps {
   image: string | null;
@@ -9,6 +10,7 @@ interface ControlPanelProps {
   fontWeight: string;
   titleBgColor: string;
   titleTextColor: string;
+  exportFormat: ExportFormat;
   onImageUpload: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onImagePaste: () => void;
   onTitleChange: (title: string) => void;
@@ -16,6 +18,7 @@ interface ControlPanelProps {
   onFontWeightChange: (weight: string) => void;
   onTitleBgColorChange: (color: string) => void;
   onTitleTextColorChange: (color: string) => void;
+  onExportFormatChange: (format: ExportFormat) => void;
   onExport: (size: number) => void;
 }
 
@@ -26,6 +29,7 @@ export default function ControlPanel({
   fontWeight,
   titleBgColor,
   titleTextColor,
+  exportFormat,
   onImageUpload,
   onImagePaste,
   onTitleChange,
@@ -33,6 +37,7 @@ export default function ControlPanel({
   onFontWeightChange,
   onTitleBgColorChange,
   onTitleTextColorChange,
+  onExportFormatChange,
   onExport,
 }: ControlPanelProps) {
   return (
@@ -166,16 +171,52 @@ export default function ControlPanel({
       {/* Export Section */}
       <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 shadow-lg">
         <h2 className="text-xl font-semibold mb-4 text-cyan-400">Export</h2>
-        <div className="grid grid-cols-2 gap-3">
-          {exportSizes.map((size) => (
+
+        {/* Format Selector */}
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-300 mb-2">
+            Export Format
+          </label>
+          <div className="grid grid-cols-2 gap-3">
             <button
-              key={size.value}
-              onClick={() => onExport(size.value)}
-              className="px-4 py-3 bg-pink-500/20 hover:bg-pink-500/30 border border-pink-500/50 rounded-lg text-pink-300 transition-all hover:shadow-neon-pink"
+              onClick={() => onExportFormatChange('ico')}
+              className={`px-4 py-2 rounded-lg border-2 transition-all ${
+                exportFormat === 'ico'
+                  ? "border-cyan-500 bg-cyan-500/20 text-cyan-300"
+                  : "border-gray-600 bg-gray-900/30 text-gray-400 hover:border-gray-500"
+              }`}
             >
-              {size.name}
+              ICO (Default)
             </button>
-          ))}
+            <button
+              onClick={() => onExportFormatChange('png')}
+              className={`px-4 py-2 rounded-lg border-2 transition-all ${
+                exportFormat === 'png'
+                  ? "border-cyan-500 bg-cyan-500/20 text-cyan-300"
+                  : "border-gray-600 bg-gray-900/30 text-gray-400 hover:border-gray-500"
+              }`}
+            >
+              PNG
+            </button>
+          </div>
+        </div>
+
+        {/* Size Selector */}
+        <div>
+          <label className="block text-sm font-medium text-gray-300 mb-2">
+            Export Size
+          </label>
+          <div className="grid grid-cols-2 gap-3">
+            {exportSizes.map((size) => (
+              <button
+                key={size.value}
+                onClick={() => onExport(size.value)}
+                className="px-4 py-3 bg-pink-500/20 hover:bg-pink-500/30 border border-pink-500/50 rounded-lg text-pink-300 transition-all hover:shadow-neon-pink"
+              >
+                {size.name}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </div>
