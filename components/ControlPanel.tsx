@@ -1,7 +1,15 @@
 "use client";
 
-import { folderStyles, fontWeights, exportSizes, FolderStyle } from "@/utils/folderStyles";
-import type { ExportFormat } from "./FolderGenerator";
+import { FolderStyle, ExportFormat } from "@/types/folder";
+import {
+  FOLDER_STYLES,
+  MODERN_NEON_STYLES,
+  ANIME_STYLES,
+  FILM_STYLES,
+  FONT_WEIGHTS,
+  EXPORT_SIZES,
+} from "@/constants/styles";
+import { SectionCard, ColorPicker, StyleButton, Input, Select, Button } from "@/components/ui";
 
 interface ControlPanelProps {
   image: string | null;
@@ -43,8 +51,7 @@ export default function ControlPanel({
   return (
     <div className="space-y-6">
       {/* Image Upload Section */}
-      <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 shadow-lg">
-        <h2 className="text-xl font-semibold mb-4 text-cyan-400">Image</h2>
+      <SectionCard title="Image">
         <div className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-300 mb-2">
@@ -57,117 +64,64 @@ export default function ControlPanel({
               className="w-full px-4 py-2 bg-gray-900/50 border border-gray-600 rounded-lg text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-cyan-500/20 file:text-cyan-400 hover:file:bg-cyan-500/30 transition-all cursor-pointer"
             />
           </div>
-          <button
-            onClick={onImagePaste}
-            className="w-full px-4 py-2 bg-purple-500/20 hover:bg-purple-500/30 border border-purple-500/50 rounded-lg text-purple-300 transition-all neon-glow-purple"
-          >
+          <Button onClick={onImagePaste} variant="secondary" fullWidth>
             Paste from Clipboard
-          </button>
+          </Button>
           {image && (
             <div className="relative aspect-square rounded-lg overflow-hidden border border-gray-600">
               <img src={image} alt="Preview" className="w-full h-full object-cover" />
             </div>
           )}
         </div>
-      </div>
+      </SectionCard>
 
       {/* Title Section */}
-      <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 shadow-lg">
-        <h2 className="text-xl font-semibold mb-4 text-cyan-400">Title</h2>
+      <SectionCard title="Title">
         <div className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">
-              Folder Title
-            </label>
-            <input
-              type="text"
-              value={title}
-              onChange={(e) => onTitleChange(e.target.value)}
-              className="w-full px-4 py-2 bg-gray-900/50 border border-gray-600 rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all"
-              placeholder="Enter folder title"
-            />
-          </div>
+          <Input
+            label="Folder Title"
+            value={title}
+            onChange={onTitleChange}
+            placeholder="Enter folder title"
+          />
 
-          <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">
-              Font Weight
-            </label>
-            <select
-              value={fontWeight}
-              onChange={(e) => onFontWeightChange(e.target.value)}
-              className="w-full px-4 py-2 bg-gray-900/50 border border-gray-600 rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all cursor-pointer"
-            >
-              {fontWeights.map((fw) => (
-                <option key={fw.value} value={fw.value}>
-                  {fw.name}
-                </option>
-              ))}
-            </select>
-          </div>
+          <Select
+            label="Font Weight"
+            value={fontWeight}
+            onChange={onFontWeightChange}
+            options={FONT_WEIGHTS}
+          />
 
           <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
-                Title Background
-              </label>
-              <div className="flex items-center gap-2">
-                <input
-                  type="color"
-                  value={titleBgColor}
-                  onChange={(e) => onTitleBgColorChange(e.target.value)}
-                  className="w-12 h-10 rounded-lg cursor-pointer bg-gray-900 border border-gray-600"
-                />
-                <input
-                  type="text"
-                  value={titleBgColor}
-                  onChange={(e) => onTitleBgColorChange(e.target.value)}
-                  className="flex-1 px-3 py-2 bg-gray-900/50 border border-gray-600 rounded-lg text-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
-                />
-              </div>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
-                Title Text
-              </label>
-              <div className="flex items-center gap-2">
-                <input
-                  type="color"
-                  value={titleTextColor}
-                  onChange={(e) => onTitleTextColorChange(e.target.value)}
-                  className="w-12 h-10 rounded-lg cursor-pointer bg-gray-900 border border-gray-600"
-                />
-                <input
-                  type="text"
-                  value={titleTextColor}
-                  onChange={(e) => onTitleTextColorChange(e.target.value)}
-                  className="flex-1 px-3 py-2 bg-gray-900/50 border border-gray-600 rounded-lg text-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
-                />
-              </div>
-            </div>
+            <ColorPicker
+              label="Title Background"
+              value={titleBgColor}
+              onChange={onTitleBgColorChange}
+            />
+            <ColorPicker
+              label="Title Text"
+              value={titleTextColor}
+              onChange={onTitleTextColorChange}
+            />
           </div>
         </div>
-      </div>
+      </SectionCard>
 
       {/* Folder Style Section */}
-      <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 shadow-lg">
-        <h2 className="text-xl font-semibold mb-4 text-cyan-400">Folder Style</h2>
-
+      <SectionCard title="Folder Style">
         {/* Modern & Neon Styles */}
         <div className="mb-4">
           <h3 className="text-sm font-medium text-gray-400 mb-2">Modern & Neon</h3>
           <div className="grid grid-cols-2 gap-2">
-            {folderStyles.slice(0, 8).map((style) => (
-              <button
+            {MODERN_NEON_STYLES.map((style) => (
+              <StyleButton
                 key={style.value}
+                label={style.name}
+                value={style.value}
+                isSelected={selectedStyle.value === style.value}
                 onClick={() => onStyleChange(style.value)}
-                className={`px-3 py-2 rounded-lg border-2 transition-all text-sm ${
-                  selectedStyle.value === style.value
-                    ? "border-cyan-500 bg-cyan-500/20 text-cyan-300 shadow-neon"
-                    : "border-gray-600 bg-gray-900/30 text-gray-400 hover:border-gray-500 hover:bg-gray-800/50"
-                }`}
-              >
-                {style.name}
-              </button>
+                variant="cyan"
+              />
             ))}
           </div>
         </div>
@@ -176,18 +130,15 @@ export default function ControlPanel({
         <div className="mb-4">
           <h3 className="text-sm font-medium text-pink-400 mb-2">Anime Themed</h3>
           <div className="grid grid-cols-2 gap-2">
-            {folderStyles.slice(8, 14).map((style) => (
-              <button
+            {ANIME_STYLES.map((style) => (
+              <StyleButton
                 key={style.value}
+                label={style.name}
+                value={style.value}
+                isSelected={selectedStyle.value === style.value}
                 onClick={() => onStyleChange(style.value)}
-                className={`px-3 py-2 rounded-lg border-2 transition-all text-sm ${
-                  selectedStyle.value === style.value
-                    ? "border-pink-500 bg-pink-500/20 text-pink-300 shadow-neon"
-                    : "border-gray-600 bg-gray-900/30 text-gray-400 hover:border-gray-500 hover:bg-gray-800/50"
-                }`}
-              >
-                {style.name}
-              </button>
+                variant="pink"
+              />
             ))}
           </div>
         </div>
@@ -196,53 +147,42 @@ export default function ControlPanel({
         <div>
           <h3 className="text-sm font-medium text-purple-400 mb-2">Film Themed</h3>
           <div className="grid grid-cols-2 gap-2">
-            {folderStyles.slice(14).map((style) => (
-              <button
+            {FILM_STYLES.map((style) => (
+              <StyleButton
                 key={style.value}
+                label={style.name}
+                value={style.value}
+                isSelected={selectedStyle.value === style.value}
                 onClick={() => onStyleChange(style.value)}
-                className={`px-3 py-2 rounded-lg border-2 transition-all text-sm ${
-                  selectedStyle.value === style.value
-                    ? "border-purple-500 bg-purple-500/20 text-purple-300 shadow-neon"
-                    : "border-gray-600 bg-gray-900/30 text-gray-400 hover:border-gray-500 hover:bg-gray-800/50"
-                }`}
-              >
-                {style.name}
-              </button>
+                variant="purple"
+              />
             ))}
           </div>
         </div>
-      </div>
+      </SectionCard>
 
       {/* Export Section */}
-      <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 shadow-lg">
-        <h2 className="text-xl font-semibold mb-4 text-cyan-400">Export</h2>
-
+      <SectionCard title="Export">
         {/* Format Selector */}
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-300 mb-2">
             Export Format
           </label>
           <div className="grid grid-cols-2 gap-3">
-            <button
+            <StyleButton
+              label="ICO (Default)"
+              value="ico"
+              isSelected={exportFormat === 'ico'}
               onClick={() => onExportFormatChange('ico')}
-              className={`px-4 py-2 rounded-lg border-2 transition-all ${
-                exportFormat === 'ico'
-                  ? "border-cyan-500 bg-cyan-500/20 text-cyan-300"
-                  : "border-gray-600 bg-gray-900/30 text-gray-400 hover:border-gray-500"
-              }`}
-            >
-              ICO (Default)
-            </button>
-            <button
+              variant="cyan"
+            />
+            <StyleButton
+              label="PNG"
+              value="png"
+              isSelected={exportFormat === 'png'}
               onClick={() => onExportFormatChange('png')}
-              className={`px-4 py-2 rounded-lg border-2 transition-all ${
-                exportFormat === 'png'
-                  ? "border-cyan-500 bg-cyan-500/20 text-cyan-300"
-                  : "border-gray-600 bg-gray-900/30 text-gray-400 hover:border-gray-500"
-              }`}
-            >
-              PNG
-            </button>
+              variant="cyan"
+            />
           </div>
         </div>
 
@@ -252,18 +192,19 @@ export default function ControlPanel({
             Export Size
           </label>
           <div className="grid grid-cols-2 gap-3">
-            {exportSizes.map((size) => (
-              <button
+            {EXPORT_SIZES.map((size) => (
+              <Button
                 key={size.value}
                 onClick={() => onExport(size.value)}
-                className="px-4 py-3 bg-pink-500/20 hover:bg-pink-500/30 border border-pink-500/50 rounded-lg text-pink-300 transition-all hover:shadow-neon-pink"
+                variant="accent"
+                className="py-3"
               >
                 {size.name}
-              </button>
+              </Button>
             ))}
           </div>
         </div>
-      </div>
+      </SectionCard>
     </div>
   );
 }

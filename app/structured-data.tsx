@@ -1,9 +1,11 @@
+import { APP_METADATA } from "@/constants/defaults";
+
 export default function StructuredData() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Folder Studio",
-    "description": "Create beautiful custom folder icons with neon-styled, anime-themed, and film-themed designs. Upload images, customize colors, fonts, and export high-quality folder icons in ICO and PNG formats.",
+    "name": APP_METADATA.NAME,
+    "description": APP_METADATA.DESCRIPTION,
     "url": "https://folder-studio.vercel.app",
     "applicationCategory": "DesignApplication",
     "operatingSystem": "Any",
@@ -14,7 +16,7 @@ export default function StructuredData() {
     },
     "creator": {
       "@type": "Organization",
-      "name": "Folder Studio Team"
+      "name": APP_METADATA.AUTHOR
     },
     "featureList": [
       "Custom folder icon generation",
@@ -29,7 +31,7 @@ export default function StructuredData() {
       "Multiple export sizes (128x128 to 1024x1024)"
     ],
     "screenshot": "https://folder-studio.vercel.app/screenshot.png",
-    "softwareVersion": "1.0.2",
+    "softwareVersion": APP_METADATA.VERSION,
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.8",
