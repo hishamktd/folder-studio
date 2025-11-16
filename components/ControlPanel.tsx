@@ -151,20 +151,65 @@ export default function ControlPanel({
       {/* Folder Style Section */}
       <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 shadow-lg">
         <h2 className="text-xl font-semibold mb-4 text-cyan-400">Folder Style</h2>
-        <div className="grid grid-cols-2 gap-3">
-          {folderStyles.map((style) => (
-            <button
-              key={style.value}
-              onClick={() => onStyleChange(style.value)}
-              className={`px-4 py-3 rounded-lg border-2 transition-all ${
-                selectedStyle.value === style.value
-                  ? "border-cyan-500 bg-cyan-500/20 text-cyan-300 shadow-neon"
-                  : "border-gray-600 bg-gray-900/30 text-gray-400 hover:border-gray-500 hover:bg-gray-800/50"
-              }`}
-            >
-              {style.name}
-            </button>
-          ))}
+
+        {/* Modern & Neon Styles */}
+        <div className="mb-4">
+          <h3 className="text-sm font-medium text-gray-400 mb-2">Modern & Neon</h3>
+          <div className="grid grid-cols-2 gap-2">
+            {folderStyles.slice(0, 8).map((style) => (
+              <button
+                key={style.value}
+                onClick={() => onStyleChange(style.value)}
+                className={`px-3 py-2 rounded-lg border-2 transition-all text-sm ${
+                  selectedStyle.value === style.value
+                    ? "border-cyan-500 bg-cyan-500/20 text-cyan-300 shadow-neon"
+                    : "border-gray-600 bg-gray-900/30 text-gray-400 hover:border-gray-500 hover:bg-gray-800/50"
+                }`}
+              >
+                {style.name}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Anime Styles */}
+        <div className="mb-4">
+          <h3 className="text-sm font-medium text-pink-400 mb-2">Anime Themed</h3>
+          <div className="grid grid-cols-2 gap-2">
+            {folderStyles.slice(8, 14).map((style) => (
+              <button
+                key={style.value}
+                onClick={() => onStyleChange(style.value)}
+                className={`px-3 py-2 rounded-lg border-2 transition-all text-sm ${
+                  selectedStyle.value === style.value
+                    ? "border-pink-500 bg-pink-500/20 text-pink-300 shadow-neon"
+                    : "border-gray-600 bg-gray-900/30 text-gray-400 hover:border-gray-500 hover:bg-gray-800/50"
+                }`}
+              >
+                {style.name}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Film Styles */}
+        <div>
+          <h3 className="text-sm font-medium text-purple-400 mb-2">Film Themed</h3>
+          <div className="grid grid-cols-2 gap-2">
+            {folderStyles.slice(14).map((style) => (
+              <button
+                key={style.value}
+                onClick={() => onStyleChange(style.value)}
+                className={`px-3 py-2 rounded-lg border-2 transition-all text-sm ${
+                  selectedStyle.value === style.value
+                    ? "border-purple-500 bg-purple-500/20 text-purple-300 shadow-neon"
+                    : "border-gray-600 bg-gray-900/30 text-gray-400 hover:border-gray-500 hover:bg-gray-800/50"
+                }`}
+              >
+                {style.name}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 

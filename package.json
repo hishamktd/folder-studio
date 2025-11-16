@@ -24,9 +24,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "commit": "bash scripts/commit.sh",
-    "release": "bash scripts/release.sh"
+    "lint": "next lint"
   },
   "packageManager": "pnpm@10.21.0",
   "dependencies": {
