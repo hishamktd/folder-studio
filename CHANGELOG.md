@@ -5,6 +5,19 @@ All notable changes to Folder Studio will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2025-11-16
+
+### Improved
+- **Enhanced folder icon design** to match professional reference
+  - Repositioned title bar to folder tab (top section)
+  - Increased image area to cover most of the folder body
+  - Improved folder proportions for more realistic appearance
+  - Better tab shape with proper rounded corners
+  - Larger, more prominent image display area
+  - Title now appears on the folder tab (like real folder designs)
+  - Enhanced shadow and depth effects
+  - More accurate folder dimensions matching reference images
+
 ## [1.0.0] - 2025-11-16
 
 ### Added
