@@ -5,6 +5,125 @@ All notable changes to Folder Studio will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2025-11-17
+
+### Major Refactoring
+
+- **Complete codebase refactoring** with professional architecture
+  - Created proper directory structure with clear separation of concerns
+  - Extracted business logic from components into dedicated modules
+  - Centralized all constants and configuration
+  - Implemented comprehensive TypeScript type system
+  - Created custom React hooks for state management
+  - Built reusable UI component library
+
+### New Directory Structure
+
+- **constants/** - Centralized constants and configuration
+  - `canvas.ts` - Canvas rendering constants and ratios
+  - `defaults.ts` - Default values and app metadata
+  - `styles.ts` - Folder styles organized by category (Modern, Anime, Film)
+
+- **types/** - Comprehensive TypeScript type definitions
+  - `folder.ts` - Core type system for all application types
+
+- **lib/** - Business logic and utilities
+  - `canvas/` - Modular canvas rendering (geometry, drawing, renderer)
+  - `export/` - Export utilities (ICO, PNG, file saver)
+  - `image/` - Image handling (upload, clipboard)
+
+- **hooks/** - Custom React hooks
+  - `useImageUpload` - Image upload and clipboard paste handling
+  - `useFolderCanvas` - Canvas rendering with reactive updates
+  - `useFolderConfig` - Folder configuration state management
+  - `useExport` - Export functionality with error handling
+
+- **components/ui/** - Reusable UI components
+  - `Button` - Configurable button with variants
+  - `ColorPicker` - Dual input color picker
+  - `Input` - Styled text input
+  - `Select` - Styled select dropdown
+  - `SectionCard` - Consistent section wrapper
+  - `StyleButton` - Style selection button
+
+### Code Quality Improvements
+
+- **Component Refactoring**
+  - FolderGenerator: 122 lines → 64 lines (-47% reduction)
+  - FolderPreview: 255 lines → 60 lines (-76% reduction)
+  - ControlPanel: 270 lines → 211 lines (-22% reduction)
+
+- **Type Safety**
+  - Added comprehensive TypeScript interfaces
+  - Better IDE autocomplete and IntelliSense
+  - Compile-time error detection
+  - Self-documenting code
+
+- **Code Organization**
+  - Separated business logic from presentation
+  - Single responsibility principle applied
+  - Eliminated code duplication
+  - Improved maintainability and testability
+
+### Technical Enhancements
+
+- **Canvas Rendering**
+  - Modular geometry calculations
+  - Reusable drawing primitives
+  - Clean rendering orchestration
+  - Better performance with optimized hooks
+
+- **State Management**
+  - Custom hooks for encapsulated state
+  - Reduced prop drilling
+  - Cleaner component APIs
+  - Better separation of concerns
+
+- **Error Handling**
+  - Proper error states in hooks
+  - Loading states for async operations
+  - Better user feedback
+
+### Version Consistency
+
+- Fixed version inconsistencies across files
+- Single source of truth in `constants/defaults.ts`
+- Updated all references to use centralized metadata
+
+### Documentation
+
+- Added comprehensive `REFACTORING.md` documentation
+  - Complete refactoring overview
+  - Migration guide for future development
+  - Code examples and best practices
+  - Testing results and next steps
+
+### Added Styles
+
+- **Anime-themed folder styles** (6 styles)
+  - Anime Sakura (pink cherry blossom)
+  - Anime Blue (deep blue)
+  - Anime Gold (golden yellow)
+  - Anime Violet (deep purple)
+  - Anime Crimson (deep red)
+  - Anime Emerald (emerald green)
+
+- **Film-themed folder styles** (6 styles)
+  - Film Noir (classic black)
+  - Film Sepia (vintage brown)
+  - Film Hollywood (classic red)
+  - Film Retro (retro cyan)
+  - Film Purple (deep purple)
+  - Film Gold (golden)
+
+### Build & Testing
+
+- ✅ TypeScript compilation successful
+- ✅ Next.js production build successful
+- ✅ All static pages generated
+- ✅ Zero type errors
+- ✅ Zero build warnings
+
 ## [1.0.1] - 2025-11-16
 
 ### Improved
@@ -104,7 +223,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Release Date | Status |
 |---------|-------------|--------|
-| 1.0.0   | 2025-11-16  | ✅ Current |
+| 1.1.0   | 2025-11-17  | ✅ Current |
+| 1.0.1   | 2025-11-16  | Released |
+| 1.0.0   | 2025-11-16  | Released |
 
 ---
 

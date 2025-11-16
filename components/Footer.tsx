@@ -1,6 +1,6 @@
 "use client";
 
-import { version } from "../package.json";
+import { APP_METADATA } from "@/constants/defaults";
 
 export default function Footer() {
   return (
@@ -8,8 +8,8 @@ export default function Footer() {
       <div className="border-t border-gray-700/50 pt-8">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-gray-500 text-sm">
           <div className="flex items-center gap-2">
-            <span className="text-cyan-400 font-semibold">Folder Studio</span>
-            <span>v{version}</span>
+            <span className="text-cyan-400 font-semibold">{APP_METADATA.NAME}</span>
+            <span>v{APP_METADATA.VERSION}</span>
             <span className="text-gray-700">|</span>
             <span>2025</span>
           </div>
@@ -52,7 +52,7 @@ export default function Footer() {
         </div>
 
         <div className="text-center mt-4 text-xs text-gray-600">
-          <p>Create beautiful custom folder icons with modern, neon-styled designs</p>
+          <p>{APP_METADATA.DESCRIPTION}</p>
         </div>
       </div>
     </footer>
