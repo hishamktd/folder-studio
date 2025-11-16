@@ -62,7 +62,7 @@ export default function ControlPanel({
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 pb-6">
       {/* Image Upload Section */}
       <SectionCard title="Image">
         <div className="space-y-4">
@@ -74,7 +74,7 @@ export default function ControlPanel({
               type="file"
               accept="image/*"
               onChange={onImageUpload}
-              className="w-full px-4 py-2 bg-gray-900/50 border border-gray-600 rounded-lg text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-cyan-500/20 file:text-cyan-400 hover:file:bg-cyan-500/30 transition-all cursor-pointer"
+              className="w-full px-4 py-2.5 bg-gray-900/60 border border-gray-600 rounded-lg text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-cyan-500/20 file:text-cyan-400 hover:file:bg-cyan-500/30 file:font-semibold transition-all duration-200 cursor-pointer hover:border-gray-500"
             />
           </div>
 
@@ -89,7 +89,7 @@ export default function ControlPanel({
                 onChange={(e) => setImageUrl(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleUrlLoad()}
                 placeholder="Enter image URL"
-                className="flex-1 px-4 py-2 bg-gray-900/50 border border-gray-600 rounded-lg text-gray-300 placeholder-gray-500 focus:border-cyan-500 focus:outline-none transition-colors"
+                className="flex-1 px-4 py-2.5 bg-gray-900/60 border border-gray-600 rounded-lg text-gray-200 placeholder-gray-500 focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/50 focus:outline-none transition-all duration-200"
               />
               <Button onClick={handleUrlLoad} variant="accent">
                 Load
@@ -102,8 +102,8 @@ export default function ControlPanel({
           </Button>
 
           {image && (
-            <div className="space-y-2">
-              <div className="relative aspect-square rounded-lg overflow-hidden border border-gray-600">
+            <div className="space-y-3">
+              <div className="relative aspect-square rounded-xl overflow-hidden border-2 border-gray-600/50 shadow-lg">
                 <img src={image} alt="Preview" className="w-full h-full object-cover" />
               </div>
               <Button onClick={onImageRemove} variant="secondary" fullWidth>

@@ -16,8 +16,8 @@ export function SectionCard({
   className = '',
 }: SectionCardProps) {
   return (
-    <div className={`bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 shadow-lg ${className}`}>
-      <h2 className={`text-xl font-semibold mb-4 ${titleColor}`}>{title}</h2>
+    <div className={`bg-gradient-to-br from-gray-800/60 to-gray-800/40 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 shadow-xl hover:border-gray-600/50 transition-all duration-300 ${className}`}>
+      <h2 className={`text-lg font-bold mb-5 ${titleColor} tracking-wide uppercase text-sm`}>{title}</h2>
       {children}
     </div>
   );
