@@ -47,6 +47,63 @@ export function useImageUpload() {
     }
   }, []);
 
+  const loadImageFromUrl = useCallback(async (url: string) => {
+    if (!url.trim()) {
+      setError('Please enter a valid URL');
+      return;
+    }
+
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      // Validate URL format
+      new URL(url);
+
+      // Create an image element to load and convert to data URL
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+
+      await new Promise<void>((resolve, reject) => {
+        img.onload = () => {
+          try {
+            // Create canvas to convert image to data URL
+            const canvas = document.createElement('canvas');
+            canvas.width = img.width;
+            canvas.height = img.height;
+            const ctx = canvas.getContext('2d');
+
+            if (!ctx) {
+              reject(new Error('Failed to get canvas context'));
+              return;
+            }
+
+            ctx.drawImage(img, 0, 0);
+            const dataUrl = canvas.toDataURL('image/png');
+            setImage(dataUrl);
+            resolve();
+          } catch (err) {
+            reject(err);
+          }
+        };
+
+        img.onerror = () => {
+          reject(new Error('Failed to load image from URL. Make sure the URL is valid and the image is accessible.'));
+        };
+
+        img.src = url;
+      });
+    } catch (err) {
+      if (err instanceof TypeError) {
+        setError('Invalid URL format');
+      } else {
+        setError(err instanceof Error ? err.message : 'Failed to load image from URL');
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
   const clearImage = useCallback(() => {
     setImage(null);
     setError(null);
@@ -58,6 +115,7 @@ export function useImageUpload() {
     error,
     uploadImage,
     pasteImage,
+    loadImageFromUrl,
     clearImage,
     setImage,
   };

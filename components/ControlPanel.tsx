@@ -1,8 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import { FolderStyle, ExportFormat } from "@/types/folder";
 import {
-  FOLDER_STYLES,
   MODERN_NEON_STYLES,
   ANIME_STYLES,
   FILM_STYLES,
@@ -21,6 +21,8 @@ interface ControlPanelProps {
   exportFormat: ExportFormat;
   onImageUpload: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onImagePaste: () => void;
+  onImageUrlLoad: (url: string) => void;
+  onImageRemove: () => void;
   onTitleChange: (title: string) => void;
   onStyleChange: (style: string) => void;
   onFontWeightChange: (weight: string) => void;
@@ -40,6 +42,8 @@ export default function ControlPanel({
   exportFormat,
   onImageUpload,
   onImagePaste,
+  onImageUrlLoad,
+  onImageRemove,
   onTitleChange,
   onStyleChange,
   onFontWeightChange,
@@ -48,6 +52,15 @@ export default function ControlPanel({
   onExportFormatChange,
   onExport,
 }: ControlPanelProps) {
+  const [imageUrl, setImageUrl] = useState('');
+
+  const handleUrlLoad = () => {
+    if (imageUrl.trim()) {
+      onImageUrlLoad(imageUrl);
+      setImageUrl(''); // Clear input after loading
+    }
+  };
+
   return (
     <div className="space-y-6">
       {/* Image Upload Section */}
@@ -64,12 +77,38 @@ export default function ControlPanel({
               className="w-full px-4 py-2 bg-gray-900/50 border border-gray-600 rounded-lg text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-cyan-500/20 file:text-cyan-400 hover:file:bg-cyan-500/30 transition-all cursor-pointer"
             />
           </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-300 mb-2">
+              Load from URL
+            </label>
+            <div className="flex gap-2">
+              <input
+                type="text"
+                value={imageUrl}
+                onChange={(e) => setImageUrl(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && handleUrlLoad()}
+                placeholder="Enter image URL"
+                className="flex-1 px-4 py-2 bg-gray-900/50 border border-gray-600 rounded-lg text-gray-300 placeholder-gray-500 focus:border-cyan-500 focus:outline-none transition-colors"
+              />
+              <Button onClick={handleUrlLoad} variant="accent">
+                Load
+              </Button>
+            </div>
+          </div>
+
           <Button onClick={onImagePaste} variant="secondary" fullWidth>
             Paste from Clipboard
           </Button>
+
           {image && (
-            <div className="relative aspect-square rounded-lg overflow-hidden border border-gray-600">
-              <img src={image} alt="Preview" className="w-full h-full object-cover" />
+            <div className="space-y-2">
+              <div className="relative aspect-square rounded-lg overflow-hidden border border-gray-600">
+                <img src={image} alt="Preview" className="w-full h-full object-cover" />
+              </div>
+              <Button onClick={onImageRemove} variant="secondary" fullWidth>
+                Remove Image
+              </Button>
             </div>
           )}
         </div>

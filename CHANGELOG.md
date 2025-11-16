@@ -5,6 +5,39 @@ All notable changes to Folder Studio will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2025-11-17
+
+### Added
+
+- **Image URL Loading**
+  - Direct image URL input field in the Image section
+  - Automatic image fetching and conversion from external URLs
+  - Support for Enter key to quickly load images
+  - CORS-enabled loading with automatic canvas conversion
+  - Validation and error handling for invalid URLs
+  - URL input clears automatically after successful load
+
+- **Remove Image Feature**
+  - New "Remove Image" button appears when image is loaded
+  - Quick way to clear the current image and start fresh
+  - Clean state reset without reloading the page
+  - Maintains all other settings (title, style, colors)
+
+### Improved
+
+- **Enhanced Image Upload Experience**
+  - Three ways to add images: file upload, clipboard paste, or URL
+  - Organized image section with clear labels
+  - Better visual feedback for loaded images
+  - Improved image preview display with remove option
+
+### Technical Changes
+
+- Added `loadImageFromUrl` function in `useImageUpload` hook
+- Enhanced error handling for URL validation and CORS issues
+- Updated `ControlPanel` component with URL input and remove button
+- Improved state management for image operations
+
 ## [1.1.0] - 2025-11-17
 
 ### Major Refactoring
@@ -223,7 +256,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Release Date | Status |
 |---------|-------------|--------|
-| 1.1.0   | 2025-11-17  | ✅ Current |
+| 1.2.0   | 2025-11-17  | ✅ Current |
+| 1.1.0   | 2025-11-17  | Released |
 | 1.0.1   | 2025-11-16  | Released |
 | 1.0.0   | 2025-11-16  | Released |
 
