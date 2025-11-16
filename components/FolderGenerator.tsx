@@ -9,7 +9,7 @@ export default function FolderGenerator() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   // Use custom hooks for state management
-  const { image, uploadImage, pasteImage } = useImageUpload();
+  const { image, uploadImage, pasteImage, loadImageFromUrl, clearImage } = useImageUpload();
 
   const {
     title,
@@ -40,6 +40,8 @@ export default function FolderGenerator() {
         exportFormat={exportFormat}
         onImageUpload={uploadImage}
         onImagePaste={pasteImage}
+        onImageUrlLoad={loadImageFromUrl}
+        onImageRemove={clearImage}
         onTitleChange={setTitle}
         onStyleChange={handleStyleChange}
         onFontWeightChange={setFontWeight}
