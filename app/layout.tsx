@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     default: "Folder Studio - Custom Folder Icon Generator",
     template: "%s | Folder Studio"
   },
-  description: "Create beautiful custom folder icons with neon-styled designs. Upload images, customize colors, fonts, and export high-quality folder icons in ICO and PNG formats. Free online tool for Windows, Mac, and Linux.",
+  description: "Create beautiful custom folder icons with neon-styled, anime-themed, and film-themed designs. Upload images, customize colors, fonts, and export high-quality folder icons in ICO and PNG formats. Free online tool for Windows, Mac, and Linux.",
   keywords: [
     "folder icon generator",
     "custom folder icons",
@@ -20,6 +20,8 @@ export const metadata: Metadata = {
     "folder customization",
     "icon maker",
     "neon folder icons",
+    "anime folder icons",
+    "film folder icons",
     "folder design tool",
     "free icon generator",
     "windows folder icons",
@@ -27,7 +29,9 @@ export const metadata: Metadata = {
     "linux folder icons",
     "folder icon creator",
     "icon design",
-    "custom icons"
+    "custom icons",
+    "anime themed folders",
+    "movie folder icons"
   ],
   authors: [{ name: "Folder Studio Team" }],
   creator: "Folder Studio Team",
